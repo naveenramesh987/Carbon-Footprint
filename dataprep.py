@@ -1,42 +1,56 @@
+from flask import Flask, request, render_template
+import joblib
+import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestRegressor
 
-# Load the dataset
-df = pd.read_csv('Carbon-Footprint/CarbonEmissions.csv')
+app = Flask(__name__)
 
-# Split dataset into features and target
-X = df.drop('CarbonEmission', axis=1)
-y = df['CarbonEmission']
+# Load the model
+model = joblib.load('Carbon-Footprint/carbon_footprint_model.joblib')
 
-# Identify categorical columns
-categorical_columns = ['Diet', 'Sex', 'Transport', 'Vehicle Type', 'Energy efficiency', 'Recycling']  # Add other categorical columns here
+# Define the column names (headers) for the input features
+feature_columns = ['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source', 'Transport', 
+                   'Vehicle Type', 'Social Activity', 'Monthly Grocery Bill', 'Frequency of Traveling by Air', 
+                   'Vehicle Monthly Distance Km', 'Waste Bag Size', 'Waste Bag Weekly Count', 
+                   'How Long TV PC Daily Hour', 'How Many New Clothes Monthly', 'How Long Internet Daily Hour', 
+                   'Energy efficiency', 'Recycling', 'Cooking_With']
 
-# Identify numerical columns
-numerical_columns = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-# Column Transformer to handle both numeric and categorical data
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('num', StandardScaler(), numerical_columns),
-        ('cat', OneHotEncoder(), categorical_columns)
-    ])
+@app.route('/predict', methods=['POST'])
+def predict():
+    # Get input features from the form
+    features = [
+        request.form['body_type'],
+        request.form['sex'],
+        request.form['diet'],
+        request.form['how_often_shower'],
+        request.form['heating_energy_source'],
+        request.form['transport'],
+        request.form['vehicle_type'],
+        request.form['social_activity'],
+        request.form['monthly_grocery_bill'],
+        request.form['frequency_travel_air'],
+        request.form['vehicle_distance_km'],
+        request.form['waste_bag_size'],
+        request.form['waste_bag_count'],
+        request.form['tv_pc_hours'],
+        request.form['new_clothes_count'],
+        request.form['internet_hours'],
+        request.form['energy_efficiency'],
+        request.form['recycling'],
+        request.form['cooking_with']
+    ]
 
-# Create a pipeline
-model_pipeline = Pipeline(steps=[
-    ('preprocessor', preprocessor),
-    ('model', RandomForestRegressor())
-])
+    # Convert the features into a pandas DataFrame with appropriate column names
+    features_df = pd.DataFrame([features], columns=feature_columns)
 
-# Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Make prediction
+    prediction = model.predict(features_df)
 
-# Train the model
-model_pipeline.fit(X_train, y_train)
+    return render_template('result.html', carbon_emission=prediction[0])
 
-# Test the model
-print(f'Model Score: {model_pipeline.score(X_test, y_test)}')
-
+if __name__ == '__main__':
+    app.run(debug=True)
