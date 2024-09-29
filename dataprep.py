@@ -1,58 +1,58 @@
-# Import necessary libraries
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestRegressor
-import joblib
+# # Import necessary libraries
+# import pandas as pd
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import OneHotEncoder, StandardScaler
+# from sklearn.compose import ColumnTransformer
+# from sklearn.pipeline import Pipeline
+# from sklearn.ensemble import RandomForestRegressor
+# import joblib
 
-# Load your dataset
-df = pd.read_csv(r'C:\Users\prabh\Desktop\co2\newCo2.csv') #CHANGE FILE PATH
+# # Load your dataset
+# df = pd.read_csv(r'C:\Users\prabh\Desktop\co2\newCo2.csv') #CHANGE FILE PATH
 
-# Replace empty values in 'Vehicle Type' with 'Not Specified'
-df['Vehicle Type'].replace('', 'Not Specified', inplace=True)
+# # Replace empty values in 'Vehicle Type' with 'Not Specified'
+# df['Vehicle Type'].replace('', 'Not Specified', inplace=True)
 
-# Define features (X) and target (y)
-X = df.drop('CarbonEmission', axis=1)
-y = df['CarbonEmission']
+# # Define features (X) and target (y)
+# X = df.drop('CarbonEmission', axis=1)
+# y = df['CarbonEmission']
 
-# Identify categorical and numerical columns
-categorical_columns = ['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
-                       'Transport', 'Vehicle Type', 'Social Activity', 
-                       'Frequency of Traveling by Air', 'Waste Bag Size', 
-                       'How Long Internet Daily Hour', 'Energy efficiency', 
-                       'Recycling', 'Cooking_With', 'Combined']
+# # Identify categorical and numerical columns
+# categorical_columns = ['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
+#                        'Transport', 'Vehicle Type', 'Social Activity', 
+#                        'Frequency of Traveling by Air', 'Waste Bag Size', 
+#                        'How Long Internet Daily Hour', 'Energy efficiency', 
+#                        'Recycling', 'Cooking_With', 'Combined']
 
-numerical_columns = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
+# numerical_columns = X.select_dtypes(include=['int64', 'float64']).columns.tolist()
 
-# Create a Column Transformer to handle both numeric and categorical data
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('num', StandardScaler(), numerical_columns),
-        ('cat', OneHotEncoder(drop='first'), categorical_columns)
-    ])
+# # Create a Column Transformer to handle both numeric and categorical data
+# preprocessor = ColumnTransformer(
+#     transformers=[
+#         ('num', StandardScaler(), numerical_columns),
+#         ('cat', OneHotEncoder(drop='first'), categorical_columns)
+#     ])
 
-# Create a pipeline with preprocessing and the RandomForestRegressor model
-model_pipeline = Pipeline(steps=[
-    ('preprocessor', preprocessor),
-    ('model', RandomForestRegressor(n_estimators=100, random_state=42))
-])
+# # Create a pipeline with preprocessing and the RandomForestRegressor model
+# model_pipeline = Pipeline(steps=[
+#     ('preprocessor', preprocessor),
+#     ('model', RandomForestRegressor(n_estimators=100, random_state=42))
+# ])
 
-# Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# # Split the data into training and test sets
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train the model
-model_pipeline.fit(X_train, y_train)
+# # Train the model
+# model_pipeline.fit(X_train, y_train)
 
-# Evaluate the model
-model_score = model_pipeline.score(X_test, y_test)
-print(f'Model Score: {model_score}')
+# # Evaluate the model
+# model_score = model_pipeline.score(X_test, y_test)
+# print(f'Model Score: {model_score}')
 
-# Save the model to a file
-# joblib.dump(model_pipeline, 'carbon_emission_model_pipeline.joblib')
+# # Save the model to a file
+# # joblib.dump(model_pipeline, 'carbon_emission_model_pipeline.joblib')
 
-print("Model training complete and saved as 'carbon_emission_model_pipeline.joblib'")
+# print("Model training complete and saved as 'carbon_emission_model_pipeline.joblib'")
 
 
 
@@ -64,7 +64,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load the trained model
-model = joblib.load('carbon_emission_model.joblib')
+model = joblib.load('Carbon-Footprint/carbon_emission_model.joblib')
 
 # Define route for the homepage
 @app.route('/')

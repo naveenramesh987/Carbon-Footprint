@@ -1,11 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Emission Result</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: url('../static/images/seesaw.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .result-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(200, 200, 200, 0.5);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .result-container:hover {
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 38px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 22px;
+            color: #34495e;
+            margin-bottom: 40px;
+        }
+
+        a {
+            text-decoration: none;
+            background: linear-gradient(135deg, #2980b9, #27ae60);
+            color: white;
+            border-radius: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.4s, transform 0.3s;
+        }
+
+        a:hover {
+            background: linear-gradient(135deg, #27ae60, #2980b9);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(41, 128, 185, 0.3);
+        }
+    </style>
 </head>
 <body>
-    <h1>Carbon Emission Prediction</h1>
-    <p>Your estimated carbon emission is: {{ carbon_emission }}</p>
-    <a href="/">Go Back</a>
+
+    <div class="result-container">
+        <h1>Carbon Emission Prediction</h1>
+        <p>Your estimated carbon emission is: {{ carbon_emission }}</p>
+        <a href="/">Go Back</a>
+    </div>
+
 </body>
 </html>

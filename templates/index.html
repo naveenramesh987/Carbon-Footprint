@@ -7,122 +7,128 @@
 </head>
 
 <body>
-  <h1>Enter Your Data. We'll predict your carbon emission score.</h1>
-  <form action="/predict" method="post">
-    <label>Body Type:</label>
-    <select name="body_type">
-      <option value="overweight">Overweight</option>
-      <option value="obese">Obese</option>
-      <option value="underweight">Underweight</option>
-      <option value="normal">Normal</option>
-    </select><br />
+  <div class="container">
+    <div class="background-left">
+    </div>
+    <div class="form-wrapper">
+      <h1>Enter Your Data. We'll predict your carbon emission score.</h1>
+      <form action="/predict" method="post">
+        <label>Body Type:</label>
+        <select name="body_type">
+          <option value="overweight">Overweight</option>
+          <option value="obese">Obese</option>
+          <option value="underweight">Underweight</option>
+          <option value="normal">Normal</option>
+        </select><br />
 
-    <label>Sex:</label>
-    <select name="sex">
-      <option value="female">Female</option>
-      <option value="male">Male</option>
-    </select><br />
+        <label>Sex:</label>
+        <select name="sex">
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </select><br />
 
-    <label>Diet:</label>
-    <select name="diet">
-      <option value="pescatarian">Pescatarian</option>
-      <option value="vegetarian">Vegetarian</option>
-      <option value="omnivore">Omnivore</option>
-      <option value="vegan">Vegan</option>
-    </select><br />
+        <label>Diet:</label>
+        <select name="diet">
+          <option value="pescatarian">Pescatarian</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="omnivore">Omnivore</option>
+          <option value="vegan">Vegan</option>
+        </select><br />
 
-    <label>How Often Shower:</label>
-    <select name="how_often_shower">
-      <option value="daily">Daily</option>
-      <option value="less frequently">Less Frequently</option>
-      <option value="more frequently">More Frequently</option>
-      <option value="twice a day">Twice a Day</option>
-    </select><br />
+        <label>How Often Shower:</label>
+        <select name="how_often_shower">
+          <option value="daily">Daily</option>
+          <option value="less frequently">Less Frequently</option>
+          <option value="more frequently">More Frequently</option>
+          <option value="twice a day">Twice a Day</option>
+        </select><br />
 
-    <label>Heating Energy Source:</label>
-    <select name="heating_energy_source">
-      <option value="coal">Coal</option>
-      <option value="natural gas">Natural Gas</option>
-      <option value="wood">Wood</option>
-      <option value="electricity">Electricity</option>
-    </select><br />
+        <label>Heating Energy Source:</label>
+        <select name="heating_energy_source">
+          <option value="coal">Coal</option>
+          <option value="natural gas">Natural Gas</option>
+          <option value="wood">Wood</option>
+          <option value="electricity">Electricity</option>
+        </select><br />
 
+
+
+
+        <label>Social Activity:</label>
+        <select name="social_activity">
+          <option value="often">Often</option>
+          <option value="never">Never</option>
+          <option value="sometimes">Sometimes</option>
+        </select><br />
+
+        <label>Monthly Grocery Bill:</label>
+        <input type="number" name="monthly_grocery_bill" /><br />
+
+        <label>Frequency of Traveling by Air:</label>
+        <select name="frequency_travel_air">
+          <option value="frequently">Frequently</option>
+          <option value="rarely">Rarely</option>
+          <option value="never">Never</option>
+          <option value="very frequently">Very Frequently</option>
+        </select><br />
+
+        <label>Vehicle Monthly Distance Km:</label>
+        <input type="number" name="vehicle_distance_km" /><br />
+
+        <label>Waste Bag Size:</label>
+        <select name="waste_bag_size">
+          <option value="large">Large</option>
+          <option value="extra large">Extra Large</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+        </select><br />
+
+        <label>Waste Bag Weekly Count:</label>
+        <input type="number" name="waste_bag_count" /><br />
+
+        <label>How Long TV/PC Daily (Hours):</label>
+        <input type="number" name="tv_pc_hours" /><br />
+
+        <label>How Many New Clothes Monthly:</label>
+        <input type="number" name="new_clothes_count" /><br />
+
+        <label>How Long Internet Daily (Hours):</label>
+        <input type="number" name="internet_hours" /><br />
+
+        <label>Energy Efficiency:</label>
+        <select name="energy_efficiency">
+          <option value="No">No</option>
+          <option value="Sometimes">Sometimes</option>
+          <option value="Yes">Yes</option>
+        </select><br />
+
+        <label>Recycling:</label><br />
+        <input type="checkbox" name="recycling[]" value="Metal"> Metal<br />
+        <input type="checkbox" name="recycling[]" value="Paper"> Paper<br />
+        <input type="checkbox" name="recycling[]" value="Plastic"> Plastic<br />
+        <input type="checkbox" name="recycling[]" value="Glass"> Glass<br />
+
+        <label>Cooking With:</label><br />
+        <input type="checkbox" name="cooking_with[]" value="Stove"> Stove<br />
+        <input type="checkbox" name="cooking_with[]" value="Oven"> Oven<br />
+        <input type="checkbox" name="cooking_with[]" value="Microwave"> Microwave<br />
+        <input type="checkbox" name="cooking_with[]" value="Grill"> Grill<br />
+        <input type="checkbox" name="cooking_with[]" value="Airfryer"> Airfryer<br />
+
+        <label>Combined</label><br />
+        <input type="checkbox" name="combined[]" value="public"> public<br />
+        <input type="checkbox" name="combined[]" value="walk/bicycle"> walk/bicycle<br />
+        <input type="checkbox" name="combined[]" value="private - petrol"> private - petrol<br />
+        <input type="checkbox" name="combined[]" value="private - diesel"> private - diesel<br />
+        <input type="checkbox" name="combined[]" value="private - hybrid"> private - hybrid<br />
+        <input type="checkbox" name="combined[]" value="private - lpg"> private - lpg<br />
+        <input type="checkbox" name="combined[]" value="private - electric"> private - electric<br />
+
+
+        <input type="submit" value="Submit" />
+      </form>
     
-
-
-    <label>Social Activity:</label>
-    <select name="social_activity">
-      <option value="often">Often</option>
-      <option value="never">Never</option>
-      <option value="sometimes">Sometimes</option>
-    </select><br />
-
-    <label>Monthly Grocery Bill:</label>
-    <input type="number" name="monthly_grocery_bill" /><br />
-
-    <label>Frequency of Traveling by Air:</label>
-    <select name="frequency_travel_air">
-      <option value="frequently">Frequently</option>
-      <option value="rarely">Rarely</option>
-      <option value="never">Never</option>
-      <option value="very frequently">Very Frequently</option>
-    </select><br />
-
-    <label>Vehicle Monthly Distance Km:</label>
-    <input type="number" name="vehicle_distance_km" /><br />
-
-    <label>Waste Bag Size:</label>
-    <select name="waste_bag_size">
-      <option value="large">Large</option>
-      <option value="extra large">Extra Large</option>
-      <option value="small">Small</option>
-      <option value="medium">Medium</option>
-    </select><br />
-
-    <label>Waste Bag Weekly Count:</label>
-    <input type="number" name="waste_bag_count" /><br />
-
-    <label>How Long TV/PC Daily (Hours):</label>
-    <input type="number" name="tv_pc_hours" /><br />
-
-    <label>How Many New Clothes Monthly:</label>
-    <input type="number" name="new_clothes_count" /><br />
-
-    <label>How Long Internet Daily (Hours):</label>
-    <input type="number" name="internet_hours" /><br />
-
-    <label>Energy Efficiency:</label>
-    <select name="energy_efficiency">
-      <option value="No">No</option>
-      <option value="Sometimes">Sometimes</option>
-      <option value="Yes">Yes</option>
-    </select><br />
-
-    <label>Recycling:</label><br />
-    <input type="checkbox" name="recycling[]" value="Metal"> Metal<br />
-    <input type="checkbox" name="recycling[]" value="Paper"> Paper<br />
-    <input type="checkbox" name="recycling[]" value="Plastic"> Plastic<br />
-    <input type="checkbox" name="recycling[]" value="Glass"> Glass<br />
-
-    <label>Cooking With:</label><br />
-    <input type="checkbox" name="cooking_with[]" value="Stove"> Stove<br />
-    <input type="checkbox" name="cooking_with[]" value="Oven"> Oven<br />
-    <input type="checkbox" name="cooking_with[]" value="Microwave"> Microwave<br />
-    <input type="checkbox" name="cooking_with[]" value="Grill"> Grill<br />
-    <input type="checkbox" name="cooking_with[]" value="Airfryer"> Airfryer<br />
-
-    <label>Combined</label><br />
-    <input type="checkbox" name="combined[]" value="public"> public<br />
-    <input type="checkbox" name="combined[]" value="walk/bicycle"> walk/bicycle<br />
-    <input type="checkbox" name="combined[]" value="private - petrol"> private - petrol<br />
-    <input type="checkbox" name="combined[]" value="private - diesel"> private - diesel<br />
-    <input type="checkbox" name="combined[]" value="private - hybrid"> private - hybrid<br />
-    <input type="checkbox" name="combined[]" value="private - lpg"> private - lpg<br />
-    <input type="checkbox" name="combined[]" value="private - electric"> private - electric<br />
-
-
-    <input type="submit" value="Submit" />
-  </form>
+  </div>
 </body>
 
 </html>
