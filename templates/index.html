@@ -47,22 +47,8 @@
       <option value="electricity">Electricity</option>
     </select><br />
 
-    <label>Transport:</label>
-    <select name="transport">
-      <option value="public">Public</option>
-      <option value="walk/bicycle">Walk/Bicycle</option>
-      <option value="private">Private</option>
-    </select><br />
+    
 
-    <label>Vehicle Type:</label>
-    <select name="vehicle_type">
-      <option value="">Select a vehicle type</option>
-      <option value="petrol">Petrol</option>
-      <option value="diesel">Diesel</option>
-      <option value="hybrid">Hybrid</option>
-      <option value="lpg">LPG</option>
-      <option value="electric">Electric</option>
-    </select><br />
 
     <label>Social Activity:</label>
     <select name="social_activity">
@@ -112,21 +98,28 @@
       <option value="Yes">Yes</option>
     </select><br />
 
-    <label>Recycling:</label>
+    <label>Recycling:</label><br />
     <input type="checkbox" name="recycling[]" value="Metal"> Metal<br />
     <input type="checkbox" name="recycling[]" value="Paper"> Paper<br />
     <input type="checkbox" name="recycling[]" value="Plastic"> Plastic<br />
     <input type="checkbox" name="recycling[]" value="Glass"> Glass<br />
-    <input type="checkbox" name="recycling[]" value="None"> None<br />
-    </br>
 
-    <label>Cooking With:</label>
+    <label>Cooking With:</label><br />
     <input type="checkbox" name="cooking_with[]" value="Stove"> Stove<br />
     <input type="checkbox" name="cooking_with[]" value="Oven"> Oven<br />
     <input type="checkbox" name="cooking_with[]" value="Microwave"> Microwave<br />
     <input type="checkbox" name="cooking_with[]" value="Grill"> Grill<br />
     <input type="checkbox" name="cooking_with[]" value="Airfryer"> Airfryer<br />
-    <input type="checkbox" name="cooking_with[]" value="None"> None<br />
+
+    <label>Combined</label><br />
+    <input type="checkbox" name="combined[]" value="public"> public<br />
+    <input type="checkbox" name="combined[]" value="walk/bicycle"> walk/bicycle<br />
+    <input type="checkbox" name="combined[]" value="private - petrol"> private - petrol<br />
+    <input type="checkbox" name="combined[]" value="private - diesel"> private - diesel<br />
+    <input type="checkbox" name="combined[]" value="private - hybrid"> private - hybrid<br />
+    <input type="checkbox" name="combined[]" value="private - lpg"> private - lpg<br />
+    <input type="checkbox" name="combined[]" value="private - electric"> private - electric<br />
+
 
     <input type="submit" value="Submit" />
   </form>
