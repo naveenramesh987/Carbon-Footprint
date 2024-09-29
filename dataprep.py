@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestRegressor
 import joblib
 
 # Load your dataset
-df = pd.read_csv(r'C:\Users\prabh\Desktop\co2\newCo2.csv')
+df = pd.read_csv(r'C:\Users\prabh\Desktop\co2\newCo2.csv') #CHANGE FILE PATH
 
 # Replace empty values in 'Vehicle Type' with 'Not Specified'
 df['Vehicle Type'].replace('', 'Not Specified', inplace=True)
